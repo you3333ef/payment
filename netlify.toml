@@ -1,0 +1,21 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[context.production]
+  site = "nfp_ccsFPmt165aa1zwVVSM8JgENK5EdnPA312ff"
+
+# Note: Redirects are handled in public/_redirects file
+# Payment pages redirect to Netlify Function for proper meta tags (bots read HTML before JS)
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Netlify Forms Configuration
+# Email notifications will be sent to the email configured in Netlify dashboard
+# Go to Site Settings > Forms > Form notifications to configure Gmail notifications
